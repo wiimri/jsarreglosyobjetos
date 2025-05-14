@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafío Inmobiliaria - Inicio</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    header { background-color: #333; color: white; padding: 1rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    main { padding: 1rem; }
+    h2, h3 { text-align: center; }
+    section { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .propiedad { background: white; padding: 1rem; border-radius: 8px; width: 300px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .propiedad img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
+    .icono { font-size: 1.2rem; margin-right: 5px; }
+    .ver-mas { text-align: center; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Inmobiliaria</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="propiedades_venta.html">Propiedades en Venta</a>
+      <a href="propiedades_alquiler.html">Propiedades en Alquiler</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Propiedades Destacadas</h2>
+    
+    <h3>En Venta</h3>
+    <section id="venta"></section>
+    <div class="ver-mas"><a href="propiedades_venta.html"><button>Ver más en venta</button></a></div>
+
+    <h3>En Alquiler</h3>
+    <section id="alquiler"></section>
+    <div class="ver-mas"><a href="propiedades_alquiler.html"><button>Ver más en alquiler</button></a></div>
+  </main>
+
+  <script src="js/propiedades.js"></script>
+  <script>
+    renderizarPropiedades(propiedades_venta, "venta", 3);
+    renderizarPropiedades(propiedades_alquiler, "alquiler", 3);
+  </script>
+</body>
+</html>
