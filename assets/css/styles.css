@@ -22,8 +22,27 @@ header::before {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(79, 78, 78, 0.5); /* Puedes subir o bajar este valor */
   z-index: 0;
+}
+
+.logo-container, header nav {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logo-container img {
+  max-width: 240px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  padding: 1%;
 }
 
 header h1, header nav {
@@ -32,10 +51,21 @@ header h1, header nav {
 }
 
 nav a {
-  color: white;
-  margin: 0 1rem;
+  background-color: #ffffffcc;
+  color: #1e3a5f;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  background-color: #1e3a5f;
+  color: white;
+  transform: scale(1.05);
 }
 
 main {
@@ -200,4 +230,26 @@ section {
 .tarjeta-prop .detalle {
   font-size: 0.9rem;
   opacity: 0.9;
+}
+
+.logo-mini {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  display: block;
+}
+
+.logo-mini img {
+  max-width: 80px;
+  height: auto;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  padding: 1%;
+}
+
+.logo-mini img:hover {
+  transform: scale(1.05);
 }
