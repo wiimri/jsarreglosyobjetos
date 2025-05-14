@@ -5,7 +5,7 @@ const propiedades_venta = [
     descripcion: "Hermosa casa moderna en barrio tranquilo.",
     ubicacion: "Vitacura, Santiago",
     habitaciones: 4,
-    costo: 1500000,
+    costo: 15000,
     smoke: true,
     pets: true
   },
@@ -88,19 +88,8 @@ function formatearMonedaCLP(valor) {
   return valor.toLocaleString("es-CL", { style: "currency", currency: "CLP" });
 }
 
-async function obtenerTasaCambio() {
-  try {
-    const response = await fetch("https://api.exchangerate.host/latest?base=CLP&symbols=USD");
-    const data = await response.json();
-    return 1 / data.rates.USD;
-  } catch (error) {
-    console.error("Error obteniendo la tasa de cambio:", error);
-    return 950; // Respaldo por si no toma la API
-  }
-}
-
-async function formatearMonedaUSD(valor) {
-  const tasaCambio = await obtenerTasaCambio();
+function formatearMonedaUSD(valor) {
+  const tasaCambio = 950;
   const usd = valor / tasaCambio;
   return usd.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
@@ -112,7 +101,7 @@ async function renderizarPropiedades(lista, idContenedor, max = lista.length) {
 
   for (let i = 0; i < max; i++) {
     const propiedad = lista[i];
-    const precioUSD = await formatearMonedaUSD(propiedad.costo);
+    const precioUSD = formatearMonedaUSD(propiedad.costo);
 
     html += `
       <div class="propiedad">
