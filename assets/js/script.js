@@ -5,7 +5,7 @@ const propiedades_venta = [
     descripcion: "Hermosa casa moderna en barrio tranquilo.",
     ubicacion: "Vitacura, Santiago",
     habitaciones: 4,
-    costo: 15000,
+    costo: 587179000,
     smoke: true,
     pets: true
   },
@@ -15,7 +15,7 @@ const propiedades_venta = [
     descripcion: "Cómodo departamento en pleno centro.",
     ubicacion: "Centro, Santiago",
     habitaciones: 2,
-    costo: 800000,
+    costo: 86140000,
     smoke: true,
     pets: false
   },
@@ -25,7 +25,7 @@ const propiedades_venta = [
     descripcion: "Ideal para artistas y creativos.",
     ubicacion: "Lastarria, Santiago",
     habitaciones: 1,
-    costo: 600000,
+    costo: 137000000,
     smoke: false,
     pets: false
   },
@@ -35,7 +35,7 @@ const propiedades_venta = [
     descripcion: "Espaciosa casa con patio amplio.",
     ubicacion: "Maipú, Santiago",
     habitaciones: 3,
-    costo: 850000,
+    costo: 340580000,
     smoke: true,
     pets: true
   }
@@ -78,7 +78,7 @@ const propiedades_alquiler = [
     descripcion: "Espacio para compartir con estudiantes.",
     ubicacion: "Estación Central, Santiago",
     habitaciones: 1,
-    costo: 150000,
+    costo: 220000,
     smoke: false,
     pets: false
   }
@@ -94,6 +94,12 @@ function formatearMonedaUSD(valor) {
   return usd.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
+function formatearUF(valorCLP) {
+  const valorUF = 39146; // valor de 1 UF en CLP (ajustable)
+  const uf = valorCLP / valorUF;
+  return `UF ${Math.round(uf)}`;
+}
+
 async function renderizarPropiedades(lista, idContenedor, max = lista.length) {
   const contenedor = document.getElementById(idContenedor);
   contenedor.innerHTML = "";
@@ -101,7 +107,10 @@ async function renderizarPropiedades(lista, idContenedor, max = lista.length) {
 
   for (let i = 0; i < max; i++) {
     const propiedad = lista[i];
-    const precioUSD = formatearMonedaUSD(propiedad.costo);
+    const esVenta = idContenedor.includes("venta");
+    const precio = esVenta
+      ? formatearUF(propiedad.costo)
+      : `${formatearMonedaCLP(propiedad.costo)} | ${formatearMonedaUSD(propiedad.costo)}`;
 
     html += `
       <div class="propiedad">
@@ -110,10 +119,7 @@ async function renderizarPropiedades(lista, idContenedor, max = lista.length) {
         <p>${propiedad.descripcion}</p>
         <p><strong>Ubicación:</strong> ${propiedad.ubicacion}</p>
         <p><strong>Habitaciones:</strong> ${propiedad.habitaciones}</p>
-        <p><strong>Precio:</strong> 
-          <span title="Pesos Chilenos">${formatearMonedaCLP(propiedad.costo)}</span> | 
-          <span title="Dólares Americanos">${precioUSD}</span>
-        </p>
+        <p><strong>Precio:</strong> ${precio}</p>
         <p class="icono">${propiedad.smoke ? '🚬 Permitido fumar' : '❌ No fumar'}</p>
         <p class="icono">${propiedad.pets ? '🐾 Mascotas permitidas' : '❌ No se permiten mascotas'}</p>
       </div>
