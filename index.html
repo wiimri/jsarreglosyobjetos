@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desafío Inmobiliaria - Inicio</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-    header { background-color: #333; color: white; padding: 1rem; text-align: center; }
-    nav a { color: white; margin: 0 1rem; text-decoration: none; }
-    main { padding: 1rem; }
-    h2, h3 { text-align: center; }
-    section { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .propiedad { background: white; padding: 1rem; border-radius: 8px; width: 300px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    .propiedad img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
-    .icono { font-size: 1.2rem; margin-right: 5px; }
-    .ver-mas { text-align: center; margin: 1rem 0; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inmobiliaria</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
   <header>
@@ -27,16 +16,50 @@
     </nav>
   </header>
 
-  <main>
-    <h2>Propiedades Destacadas</h2>
+  <section class="seccion-destacada">
+    <h2><span class="azul">Descubre nuestras propiedades</span> <span class="verde">usadas destacadas</span></h2>
     
+
+    <div class="tarjetas-destacadas">
+      <div class="tarjeta-prop">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4kykXuTgKDt0kmjRt3vwnzIsHj59XLR-08A&s" alt="Casa Moderna" />
+        <div class="contenido">
+          <h3>Casa Moderna</h3>
+          <p>Vitacura, Santiago | VENTA</p>
+          <p><strong>Dorm:</strong> 4 <strong>Baños:</strong> 2 <strong>Estac:</strong> SI</p>
+          <p class="precio">$ 15.000 UF</p>
+        </div>
+      </div>
+
+      <div class="tarjeta-prop">
+        <img src="https://images.adsttc.com/media/images/6456/b87f/8c76/f501/7c64/0540/newsletter/apartamento-lucas-petit-minimo-arquitetura-e-design_1.jpg?1683404956" alt="Depto Compacto" />
+        <div class="contenido">
+          <h3>Depto Compacto</h3>
+          <p>Providencia, Santiago | ALQUILER</p>
+          <p><strong>Dorm:</strong> 1 <strong>Baños:</strong> 1 <strong>Estac:</strong> NO</p>
+          <p class="precio">$ 600.000</p>
+          <p class="detalle">(No Incluye GGCC)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <h2>Descubre nuestras propiedades destacadas</h2>
+
     <h3>En Venta</h3>
-    <section id="venta"></section>
-    <div class="ver-mas"><a href="propiedades_venta.html"><button>Ver más en venta</button></a></div>
+    <section id="venta">
+    </section>
+    <div class="ver-mas">
+      <a href="propiedades_venta.html"><button>Ver más en venta</button></a>
+    </div>
 
     <h3>En Alquiler</h3>
-    <section id="alquiler"></section>
-    <div class="ver-mas"><a href="propiedades_alquiler.html"><button>Ver más en alquiler</button></a></div>
+    <section id="alquiler">
+    </section>
+    <div class="ver-mas">
+      <a href="propiedades_alquiler.html"><button>Ver más en alquiler</button></a>
+    </div>
   </main>
 
   <script src="js/propiedades.js"></script>
